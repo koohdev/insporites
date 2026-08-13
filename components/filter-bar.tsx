@@ -68,6 +68,7 @@ export function FilterBar({
           <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 ${isDark ? "text-neutral-500" : "text-neutral-400"}`} />
           <input
             type="text"
+            aria-label="Search components, tags..."
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             onFocus={() => {
