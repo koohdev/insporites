@@ -10,7 +10,7 @@ export function BouncyAccordion404Preview() {
 
   return (
     <div className={cn("w-full h-full flex flex-col items-center justify-center p-4", isDark ? "dark" : "")}>
-      <div className="w-full max-w-[448px]">
+      <div className="w-full max-w-md">
         <BouncyAccordion />
       </div>
     </div>

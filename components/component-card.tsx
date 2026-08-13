@@ -21,11 +21,11 @@ interface ComponentCardProps {
 }
 
 const spanClassMap: Record<GridSpan, string> = {
-  "1x1": "col-span-1 row-span-1 min-h-[320px]",
-  "2x1": "col-span-1 md:col-span-2 row-span-1 min-h-[320px]",
-  "1x2": "col-span-1 row-span-2 min-h-[640px]",
-  "2x2": "col-span-1 md:col-span-2 row-span-2 min-h-[640px]",
-  "4x2": "col-span-1 md:col-span-2 xl:col-span-4 row-span-2 min-h-[720px]",
+  "1x1": "col-span-1 row-span-1 min-h-[320px] h-full flex flex-col",
+  "2x1": "col-span-1 md:col-span-2 row-span-1 min-h-[320px] h-full flex flex-col",
+  "1x2": "col-span-1 row-span-2 min-h-[640px] h-full flex flex-col",
+  "2x2": "col-span-1 md:col-span-2 row-span-2 min-h-[640px] h-full flex flex-col",
+  "4x2": "col-span-1 md:col-span-2 xl:col-span-4 row-span-2 min-h-[720px] h-full flex flex-col",
 };
 
 const DEFAULT_DARK_COMPONENTS = new Set([
@@ -88,13 +88,13 @@ export function ComponentCard({ item, overrideTheme, children }: ComponentCardPr
     <CardThemeContext.Provider value={cardTheme}>
       {/* Outer Frame - Entire clicked grid card flips to #151515 in dark mode */}
       <Frame
-        className={`group relative w-full overflow-hidden transition-colors duration-300 ${
+        className={`group relative w-full h-full flex-1 flex flex-col overflow-hidden transition-colors duration-300 ${
           isDark ? "bg-[#151515] border-neutral-800 text-white" : "bg-white border-neutral-200 text-neutral-900"
         } ${spanClasses}`}
       >
         {/* Inner FramePanel */}
         <FramePanel
-          className={`flex flex-col justify-between h-full w-full p-6 overflow-hidden transition-colors duration-300 ${
+          className={`flex flex-col justify-between h-full flex-1 w-full p-6 overflow-hidden transition-colors duration-300 ${
             isDark ? "bg-[#151515] border-neutral-800/80 text-white" : "bg-white border-neutral-200/80 text-neutral-900"
           }`}
         >

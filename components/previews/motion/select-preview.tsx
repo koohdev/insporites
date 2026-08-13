@@ -29,7 +29,7 @@ export function SelectPreview() {
     <div className={cn("w-full h-full flex flex-col items-center justify-center p-4 gap-6", isDark ? "dark" : "")}>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-8 w-full max-w-lg min-h-[220px]">
         {/* Standard Pinch Select */}
-        <div className="flex flex-col gap-2 w-56">
+        <div className="flex flex-col gap-2 w-full max-w-xs">
           <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
             Standard Pinch Select
           </span>
@@ -47,7 +47,7 @@ export function SelectPreview() {
         </div>
 
         {/* Morphing Select */}
-        <div className="flex flex-col gap-2 w-56">
+        <div className="flex flex-col gap-2 w-full max-w-xs">
           <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
             Morphing Surface Select
           </span>

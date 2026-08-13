@@ -58,11 +58,11 @@ const sampleNotifications: NotificationStackItem[] = [
 ];
 
 const spanClassMap: Record<GridSpan, string> = {
-  "1x1": "col-span-1 row-span-1 min-h-[320px]",
-  "2x1": "col-span-1 md:col-span-2 row-span-1 min-h-[320px]",
-  "1x2": "col-span-1 row-span-2 min-h-[640px]",
-  "2x2": "col-span-1 md:col-span-2 row-span-2 min-h-[640px]",
-  "4x2": "col-span-1 md:col-span-2 xl:col-span-4 row-span-2 min-h-[720px]",
+  "1x1": "col-span-1 row-span-1 min-h-[320px] h-full flex flex-col",
+  "2x1": "col-span-1 md:col-span-2 row-span-1 min-h-[320px] h-full flex flex-col",
+  "1x2": "col-span-1 row-span-2 min-h-[640px] h-full flex flex-col",
+  "2x2": "col-span-1 md:col-span-2 row-span-2 min-h-[640px] h-full flex flex-col",
+  "4x2": "col-span-1 md:col-span-2 xl:col-span-4 row-span-2 min-h-[720px] h-full flex flex-col",
 };
 
 export default function Home() {
@@ -175,7 +175,7 @@ export default function Home() {
                       overrideTheme={globalTheme === "custom" ? undefined : globalTheme}
                     >
                       {item.id === "bouncy-accordion" && (
-                        <div className="w-full h-[520px] overflow-auto scrollbar-none p-1 flex items-center justify-center">
+                        <div className="w-full h-full min-h-[580px] p-2 flex justify-center items-start overflow-y-auto scrollbar-none">
                           <BouncyAccordion />
                         </div>
                       )}
@@ -190,12 +190,12 @@ export default function Home() {
                       )}
                       {item.id === "portfolio-allocation" && <PortfolioAllocationCard />}
                       {item.id === "availability-schedule" && (
-                        <div className="w-full h-[560px] overflow-y-auto p-2 flex justify-center items-start">
+                        <div className="w-full h-full min-h-[480px] p-2 flex justify-center items-start">
                           <AvailabilitySchedulerPreview />
                         </div>
                       )}
                       {item.id === "combobox-search" && (
-                        <div className="w-full h-[460px] flex items-center justify-center p-2">
+                        <div className="w-full h-full min-h-[360px] flex items-center justify-center p-2">
                           <ComboboxPreview />
                         </div>
                       )}
@@ -205,7 +205,7 @@ export default function Home() {
                       {item.id === "preview-rail" && <PreviewRailPreview />}
                       {item.id === "range-slider" && <RangeSliderPreview />}
                       {item.id === "file-upload" && (
-                        <div className="w-full h-full min-h-[580px] p-2 flex justify-center items-center">
+                        <div className="w-full h-full min-h-[520px] p-2 flex justify-center items-center">
                           <FileUploadPreview />
                         </div>
                       )}
@@ -223,7 +223,7 @@ export default function Home() {
                       )}
                       {item.id === "loaders" && <LoaderPreview />}
                       {item.id === "custom-video-player" && (
-                        <div className="w-full h-full min-h-[540px] flex items-center justify-center">
+                        <div className="w-full h-full min-h-[480px] flex items-center justify-center">
                           <CustomVideoPlayerPreview />
                         </div>
                       )}

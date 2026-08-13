@@ -38,6 +38,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Before assigning card spans (`2x2`, `4x2`) or wrapper constraints in `app/page.tsx`, ALWAYS calculate the total vertical height required by the rendered component (including dropzones, item rows, status indicators, and outer card wrappers like `Upload package`).
 - For multi-pattern or tall components (e.g. `file-upload`), assign an expanded card span min-height (e.g. `4x2 min-h-[720px]`) and inner wrapper bounds (`min-h-[580px]`).
 - NEVER use restrictive fixed heights (`h-[540px]`) that clip, truncate, or hide bottom rows, progress bars, or outer card wrappers from the user's view.
+- Enforce `h-full flex flex-col flex-1` on outer grid card containers (`Frame`, `FramePanel`) so grid cards stretch to occupy 100% of the available vertical grid cell height.
 
 ## 9. Sound Opportunity Auditing & Web Audio Integration
 - When building or refactoring components, ALWAYS evaluate sound interaction opportunities (hover, click, drag, snap, step, open, collapse).
@@ -46,4 +47,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
   2. **Customized Tick / Tone** (`createTickPlayer().playHover()`, `createTickPlayer().playClick()`): for card hover entries, button clicks, popovers, notification stacks.
   3. **Custom Synthesized Web Audio Tone** (e.g., sine/triangle ramp tones): for state chimes (check, uncheck, open, collapse, message send).
 - Always expose an optional `sound?: boolean` prop (default `true`) for user toggles and accessible control.
+
+## 10. Responsive Sub-Element Stacking for Metric Displays
+- When designing metric cards or panels with gauges, avatars, and text, ensure sub-elements do not collide on narrow column widths (`<640px` or 1-column layouts).
+- Use responsive flex/grid direction (`flex flex-col sm:grid sm:grid-cols-[1fr_auto]`) to stack text/avatars on top and place the gauge centered at the bottom on small screens.
 

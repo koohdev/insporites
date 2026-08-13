@@ -217,7 +217,7 @@ export function FileUploadPreview() {
 
         {/* Pattern 02: Upload Queue Card */}
         <div className="w-full max-w-md rounded-[2rem] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 p-3 sm:p-4 shadow-sm transition-colors duration-200">
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-2 px-1">
+          <div className="mb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-1">
             <div>
               <p className="text-sm font-semibold text-neutral-900 dark:text-white">
                 Upload package
@@ -228,7 +228,7 @@ export function FileUploadPreview() {
               </p>
             </div>
 
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 flex-wrap">
               <div className="flex rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 p-1">
                 {VARIANTS.map((entry) => {
                   const selected = entry.id === queueVariant;

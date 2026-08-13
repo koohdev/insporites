@@ -63,7 +63,7 @@ export function FilterBar({
       }`}
     >
       {/* Left: Search Input & Global Light/Dark All Toggle */}
-      <div className="flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-start gap-3 w-full lg:w-auto">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between sm:justify-start gap-3 w-full lg:w-auto">
         <div className="relative w-full sm:w-72">
           <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 ${isDark ? "text-neutral-500" : "text-neutral-400"}`} />
           <input
@@ -84,7 +84,7 @@ export function FilterBar({
 
         {/* Global Light / Dark All Mode Switcher */}
         <div
-          className={`flex items-center gap-1 p-1 rounded-2xl border shrink-0 transition-colors duration-300 ${
+          className={`flex items-center justify-center sm:justify-start gap-1 p-1 rounded-2xl border w-full sm:w-auto shrink-0 transition-colors duration-300 ${
             isDark ? "bg-[#151515] border-neutral-800" : "bg-neutral-100 border-neutral-200"
           }`}
         >

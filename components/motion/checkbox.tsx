@@ -3,6 +3,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useId, useRef } from "react";
+import { useCardTheme } from "@/components/component-card";
 import { EASE_OUT, SPRING_PRESS } from "@/lib/ease";
 import { createTickPlayer } from "@/lib/tick-sound";
 import { cn } from "@/lib/utils";
@@ -39,6 +40,8 @@ export function Checkbox({
   const autoId = useId();
   const id = idProp ?? autoId;
   const reduce = useReducedMotion();
+  const cardTheme = useCardTheme();
+  const isDark = cardTheme === "dark";
   const showMark = checked || indeterminate;
   const path = indeterminate ? INDETERMINATE_PATH : CHECK_PATH;
 
@@ -143,7 +146,13 @@ export function Checkbox({
         </AnimatePresence>
       </motion.button>
       {label ? (
-        <span className={cn("select-none text-sm text-neutral-900 dark:text-white font-medium", disabled && "opacity-60")}>
+        <span
+          className={cn(
+            "select-none text-sm font-medium",
+            isDark ? "text-white" : "text-neutral-900",
+            disabled && "opacity-60",
+          )}
+        >
           {label}
         </span>
       ) : null}

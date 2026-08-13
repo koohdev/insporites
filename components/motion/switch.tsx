@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { useId } from "react";
+import { useCardTheme } from "@/components/component-card";
 import { SPRING_PRESS } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,8 @@ export function Switch({
 }: SwitchProps) {
   const id = useId();
   const reduce = useReducedMotion();
+  const cardTheme = useCardTheme();
+  const isDark = cardTheme === "dark";
 
   return (
     <label
@@ -47,8 +50,12 @@ export function Switch({
         className={cn(
           "relative inline-flex h-6 w-11 shrink-0 rounded-full border-2 border-transparent p-0.5 outline-none transition-colors duration-200 cursor-pointer shadow-xs",
           checked
-            ? "bg-neutral-900 dark:bg-white"
-            : "bg-neutral-200 dark:bg-neutral-800",
+            ? isDark
+              ? "bg-white"
+              : "bg-neutral-900"
+            : isDark
+              ? "bg-neutral-800"
+              : "bg-neutral-200",
         )}
       >
         <motion.span
@@ -59,16 +66,25 @@ export function Switch({
               : { type: "spring", stiffness: 500, damping: 30 }
           }
           className={cn(
-            "pointer-events-none block h-4 w-4 rounded-full shadow-md transition-colors",
+            "pointer-events-none block h-4 w-4 rounded-full shadow-xs transition-colors",
             checked
-              ? "translate-x-5 bg-white dark:bg-neutral-900"
-              : "translate-x-0 bg-white dark:bg-neutral-400",
+              ? isDark
+                ? "translate-x-5 bg-neutral-950"
+                : "translate-x-5 bg-white"
+              : isDark
+                ? "translate-x-0 bg-neutral-400"
+                : "translate-x-0 bg-white",
           )}
         />
       </motion.button>
 
       {label ? (
-        <span className="select-none text-sm font-medium text-neutral-900 dark:text-white">
+        <span
+          className={cn(
+            "select-none text-sm font-medium",
+            isDark ? "text-white" : "text-neutral-900",
+          )}
+        >
           {label}
         </span>
       ) : null}

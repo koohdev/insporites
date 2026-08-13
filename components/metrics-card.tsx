@@ -132,10 +132,10 @@ export function MetricsCard({
               )}
             </div>
 
-            {/* Main content grid */}
-            <div className="grid grid-cols-[1fr_auto] items-end p-3.5 gap-2 min-h-[140px]">
-              {/* Left Column: Status info + Avatar group */}
-              <div className="flex flex-col justify-between gap-5 min-w-0">
+            {/* Main content layout: stacked flex-col on small screens, side-by-side grid on sm+ */}
+            <div className="flex flex-col sm:grid sm:grid-cols-[1fr_auto] items-center sm:items-end justify-between p-3.5 gap-4 sm:gap-2 min-h-[140px] w-full">
+              {/* Top/Left Column: Status info + Avatar group */}
+              <div className="flex flex-col justify-between gap-3 sm:gap-5 min-w-0 w-full text-left">
                 <div>
                   <h4 className="text-xs sm:text-sm font-semibold text-neutral-100 mb-0.5">
                     {panel.statusLabel}
