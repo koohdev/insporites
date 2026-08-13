@@ -1,0 +1,3 @@
+## 2024-05-18 - Early Returns and Loop Optimizations in Filters
+**Learning:** In a codebase featuring a heavy component registry (like `COMPONENTS_REGISTRY`), nested string operations (`toLowerCase`, `includes`, `some`) inside the `.filter()` loop can quickly become a bottleneck, especially as the registry grows or when rendering a large gallery.
+**Action:** Always pre-calculate invariant values (like `searchQuery.toLowerCase().trim()`) outside the loop. Use early returns on simple boolean checks (like category matching) before executing expensive string manipulations for items that will ultimately be discarded.
