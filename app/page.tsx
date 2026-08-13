@@ -79,10 +79,16 @@ export default function Home() {
 
   // Filter components
   const filteredComponents = useMemo(() => {
+    // ⚡ Bolt Optimization: Calculate query once outside the loop
+    const query = searchQuery.toLowerCase().trim();
+
     return COMPONENTS_REGISTRY.filter((item) => {
       const matchesCategory =
         selectedCategory === "All" || item.category === selectedCategory;
-      const query = searchQuery.toLowerCase().trim();
+
+      // ⚡ Bolt Optimization: Early return to avoid expensive string operations
+      if (!matchesCategory) return false;
+
       const matchesSearch =
         !query ||
         item.title.toLowerCase().includes(query) ||
@@ -90,7 +96,7 @@ export default function Home() {
         item.tags.some((tag) => tag.toLowerCase().includes(query)) ||
         item.category.toLowerCase().includes(query);
 
-      return matchesCategory && matchesSearch;
+      return matchesSearch;
     });
   }, [selectedCategory, searchQuery]);
 
